@@ -31,27 +31,34 @@ Vanilla **HTML**, **CSS**, and **JavaScript** only.
 - No npm, bundlers, frameworks, or CSS preprocessors.
 - No WordPress, PHP, or jQuery. The recovered `archive/en` and `archive/bg` WordPress trees are source material, not runtime.
 - Pages are static files a browser can open locally or a simple HTTP server can host.
-- UI elements are reusable components, no code duplication of elements.
-- New pages should be nested under /pages and linked together
+- Shared chrome is defined once as vanilla custom elements, not copied into each page.
+- Topic pages live under `/pages` and are linked from the shared nav.
 
 JavaScript, when used, should stay small and local: navigation, galleries, language toggle, and lightbox-style viewing of images. Prefer HTML and CSS when they are enough.
-dialogues, literary essays, love on boogie street, erotic memories, now and after, in the past, gallery, contact
+
 ## Repository layout
 
 ```
 .
-├── index.html          # Site entry (home)
-├── pages/
-│   ├── page_name.html
+├── index.html                 # Site root / About landing
+├── pages/                     # All other public pages
+│   ├── dialogues.html
+│   ├── literary-essays.html
+│   ├── love-on-boogie-street.html
+│   ├── erotic-memories.html
+│   ├── now-and-after.html
+│   ├── in-the-past.html
+│   ├── gallery.html
+│   └── contact.html
 ├── assets/
-│   ├── styles.css      # Shared visual system
-│   ├── img/            # Photographs, covers, and other images served by the new site
-│   └── js/             # Optional vanilla scripts (add as needed)
-├── archive/            # Read-only Wayback salvage of the previous site
+│   ├── styles.css             # Shared visual system
+│   ├── img/                   # Photographs and other media
+│   └── js/
+│       ├── components.js      # <site-shell>, <site-header>, <site-nav>, <site-footer>
+│       └── site.js            # Language toggle and gallery behavior
+├── archive/                   # Read-only Wayback salvage of the previous site
 └── README.md
 ```
-
-Pages for books, photographs, essays, biography, and documents should sit at the repository root or in small topic folders (`books/`, `photos/`, `writing/`, `about/`) as the reconstruction grows. Keep URLs short and stable. Shared chrome (header, nav, footer) can be duplicated in HTML for now; if repetition becomes painful, a tiny include script is acceptable, a template engine is not.
 
 `assets/` is the canonical media tree for the new site. Copy recovered images and PDFs here only after they have been checked: many Wayback files are stubs, truncated downloads, or WordPress internals that should not be published.
 
@@ -61,12 +68,15 @@ The site is a small set of linked documents with one visual system.
 
 | Layer | Role |
 | --- | --- |
-| `index.html` | Home: author identity, featured books, and routes into the rest of the archive. |
-| Topic pages | Biography, books, photographs, selected texts, professional writing, contact. |
-| `assets/styles.css` | Type, color, spacing, layout, and component styles for every page. |
+| `index.html` | Site root: author identity, photograph gallery, and the bilingual statement. |
+| `pages/` | Section pages. Each file holds only that page’s content inside `<site-shell>`. |
+| `assets/js/components.js` | Reusable chrome: header, nav, footer, and the page shell. |
+| `assets/js/site.js` | Language switching and the home gallery. |
+| `assets/styles.css` | Type, color, spacing, layout, and component styles. |
 | `assets/img/` | Photographs, book covers, and other images. |
-| Documents | PDFs (essays, CV, samples, reviews) linked from topic pages. |
 | `archive/` | Evidence for reconstruction. Never linked from the public site. |
+
+A new section is one HTML file in `pages/`, plus one entry in the `NAV` list in `assets/js/components.js`. The nav, header, and footer are not copied.
 
 Suggested information architecture, drawn from what the old site actually contained:
 

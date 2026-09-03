@@ -46,6 +46,13 @@ body {
   line-height: 1.65;
 }
 
+site-shell,
+site-header,
+site-nav,
+site-footer {
+  display: block;
+}
+
 img {
   max-width: 100%;
   height: auto;

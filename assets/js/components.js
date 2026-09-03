@@ -11,21 +11,45 @@
     { id: "contact", bg: "Контакт", en: "Contact" }
   ];
 
+  function pagesDepth() {
+    var path = location.pathname.replace(/\\/g, "/");
+    var marker = "/pages/";
+    var i = path.indexOf(marker);
+    if (i < 0) return 0;
+    var rest = path.slice(i + marker.length).replace(/\/+$/, "");
+    if (!rest) return 1;
+    return rest.split("/").length;
+  }
+
   function inPages() {
-    return /(?:^|\/)pages(?:\/|$)/.test(location.pathname);
+    return pagesDepth() > 0;
+  }
+
+  function relToSiteRoot() {
+    var depth = pagesDepth();
+    return depth === 0 ? "" : "../".repeat(depth);
+  }
+
+  function relToPagesRoot() {
+    var depth = pagesDepth();
+    if (depth <= 1) return "";
+    return "../".repeat(depth - 1);
   }
 
   function pageHref(id) {
     if (id === "about") {
-      return inPages() ? "../index.html" : "index.html";
+      return relToSiteRoot() + "index.html";
     }
-    return inPages() ? id + ".html" : "pages/" + id + ".html";
+    if (pagesDepth() === 0) return "pages/" + id + ".html";
+    return relToPagesRoot() + id + ".html";
   }
 
   function currentId() {
-    var file = location.pathname.split("/").pop() || "index.html";
-    if (!file || file === "index.html") return "about";
-    return file.replace(/\.html$/, "");
+    var path = location.pathname.replace(/\\/g, "/");
+    var i = path.indexOf("/pages/");
+    if (i < 0) return "about";
+    var first = path.slice(i + "/pages/".length).split("/")[0] || "";
+    return first.replace(/\.html$/, "") || "about";
   }
 
   global.Site = {

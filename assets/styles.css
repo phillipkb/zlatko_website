@@ -186,7 +186,9 @@ html[data-lang="en"] .lang-en {
 }
 
 html[data-lang="bg"] p.lang-bg,
-html[data-lang="en"] p.lang-en {
+html[data-lang="en"] p.lang-en,
+html[data-lang="bg"] div.lang-bg,
+html[data-lang="en"] div.lang-en {
   display: block;
 }
 
@@ -249,6 +251,127 @@ html[data-lang="en"] p.lang-en {
 .page-note {
   color: var(--ink-soft);
   font-size: 0.98rem;
+}
+
+.essay-index {
+  list-style: none;
+  margin: 2.25rem 0 0;
+  padding: 0;
+}
+
+.essay-index li {
+  padding: 1.35rem 0 1.2rem;
+  border-top: 1px solid var(--rule);
+}
+
+.essay-index .essay-title {
+  display: block;
+  color: inherit;
+  font-size: 1.2rem;
+  font-style: italic;
+  line-height: 1.35;
+  text-decoration: none;
+}
+
+.essay-index a.essay-title:hover {
+  color: var(--accent);
+}
+
+.essay-index .essay-gloss {
+  margin: 0.2rem 0 0;
+  color: var(--ink-soft);
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-style: normal;
+  letter-spacing: 0.04em;
+}
+
+html[data-lang="en"] .essay-index .essay-gloss {
+  display: block;
+}
+
+.essay-index .essay-meta {
+  margin: 0.45rem 0 0;
+  color: var(--ink-soft);
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+}
+
+.essay-index .essay-excerpt {
+  margin: 0.55rem 0 0;
+  color: var(--ink-soft);
+  font-size: 0.98rem;
+}
+
+.essay-index .is-missing .essay-title {
+  cursor: default;
+}
+
+.essay-index .is-missing .essay-excerpt {
+  font-style: italic;
+}
+
+.essay-back {
+  margin: 0 0 1.25rem;
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.essay-back a {
+  color: var(--ink-soft);
+  text-decoration: none;
+}
+
+.essay-back a:hover {
+  color: var(--accent);
+}
+
+.essay-header .essay-byline,
+.essay-header .essay-source {
+  margin: 0 0 0.35rem;
+  color: var(--ink-soft);
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+}
+
+.essay-body {
+  margin-top: 1.75rem;
+}
+
+.essay-body h2 {
+  margin: 1.75rem 0 0.75rem;
+  font-size: 1.15rem;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.essay-body .epigraph {
+  text-align: center;
+  color: var(--ink-soft);
+}
+
+.essay-body .pull-quote {
+  text-align: right;
+  font-style: italic;
+}
+
+.essay-body hr {
+  width: 4rem;
+  margin: 1.75rem 0;
+  border: 0;
+  border-top: 1px solid var(--rule);
+}
+
+.footnotes {
+  margin-top: 2.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--rule);
+  color: var(--ink-soft);
+  font-size: 0.92rem;
 }
 
 .photo-grid {

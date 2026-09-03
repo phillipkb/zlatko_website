@@ -3,8 +3,12 @@
   var storageKey = "antipropaganda-lang";
   var langButtons = document.querySelectorAll("[data-lang]");
   var titled = {
-    bg: "Златко Ангелов — До Саутхамптън през Айова",
-    en: "Zlatko Anguelov — To Southampton via Iowa"
+    bg: html.getAttribute("data-title-bg") || "Златко Ангелов — До Саутхамптън през Айова",
+    en: html.getAttribute("data-title-en") || "Zlatko Anguelov — To Southampton via Iowa"
+  };
+  var navLabel = {
+    bg: "Раздели",
+    en: "Sections"
   };
   var galleryLabel = {
     bg: "Галерия",
@@ -37,6 +41,8 @@
     var nextBtn = document.querySelector("[data-gallery-next]");
     if (prev) prev.setAttribute("aria-label", prevLabel[next]);
     if (nextBtn) nextBtn.setAttribute("aria-label", nextLabel[next]);
+    var nav = document.querySelector(".site-nav");
+    if (nav) nav.setAttribute("aria-label", navLabel[next]);
     try {
       localStorage.setItem(storageKey, next);
     } catch (err) {

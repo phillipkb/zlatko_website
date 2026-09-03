@@ -31,9 +31,10 @@ Vanilla **HTML**, **CSS**, and **JavaScript** only.
 - No npm, bundlers, frameworks, or CSS preprocessors.
 - No WordPress, PHP, or jQuery. The recovered `archive/en` and `archive/bg` WordPress trees are source material, not runtime.
 - Pages are static files a browser can open locally or a simple HTTP server can host.
+- UI elements are reusable components, no code duplication of elements.
 
 JavaScript, when used, should stay small and local: navigation, galleries, language toggle, and lightbox-style viewing of images. Prefer HTML and CSS when they are enough.
-
+dialogues, literary essays, love on boogie street, erotic memories, now and after, in the past, gallery, contact
 ## Repository layout
 
 ```

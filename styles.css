@@ -1,0 +1,71 @@
+/* 
+
+pg zlatko anguelov antipropaganda.net
+
+*/
+
+body
+{
+	background-color: #103A73;
+	margin: 0;
+	font-size: 12px;
+	font-family: Garamond, Book Antiqua, Times New Roman;
+	color: BDBDBD
+}
+
+BODY {background-image: url(bg.gif); background-repeat: repeat-x;background-position: 0% 0%} 
+
+img
+{
+
+	border: 0;
+
+}
+
+a:link {color: #ffffff; font-weight: bold; text-decoration: underline}
+a:visited {color: #ffffff; font-weight: bold; text-decoration: underline}
+a:active {color: #ffffff; font-weight: bold; text-decoration: none}
+a:hover {  color: #ffffff; font-weight: bold; text-decoration: none}
+
+hr {
+	border: 0;
+	width: 100%;
+	height: 1px;
+	background-color: #103A73;
+	color: #103A73;
+}
+
+.hidden { display: none; }
+
+#wrapper
+{
+	background-color: #1A4C8F;
+}
+
+
+.title
+{
+	margin-top: 2px;
+	background-color: red;
+	background-image: url(images/gradient_title.gif);
+	background-repeat: repeat-x;
+	border-color: #DB5A5E;
+	border-width: 1px;
+	border-style: solid;
+}
+
+.mainpage
+{
+	text-align: left;
+	color: white;
+	font-size: 26pt;
+	font-family: Garamond, Book Antiqua, Times New Roman;
+}
+
+.bottombar
+{
+	text-align: left;
+	color: white;
+	font-size: 12pt;
+	font-family: Garamond, Book Antiqua, Times New Roman;
+	link-color: 000000

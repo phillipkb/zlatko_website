@@ -1,0 +1,179 @@
+
+body  {
+	padding:0;
+	margin:0;
+	
+}
+
+#enter_body {
+	padding:0;
+	margin:0 auto;
+	width:960px;
+	border:0px solid #CC0000;
+	color: #000000;
+	font-size: 12px;
+	font-family: Helvetica, Arial, Trebuchet MS, Verdana;
+	line-height: 18px;
+}
+#enter_top {
+	width:960px;
+	float:left;
+	padding-top:30px;
+	padding-bottom:30px;
+	border-bottom:1px solid #000;
+}
+
+.enter_logo{
+	width:345px;
+	height:50px;
+	float:left;
+	border:none;
+}
+
+.enter_flags{
+	width:600px;
+	height:30px;
+	float:right;
+	border:0px solid #CC0000;
+	text-align:right;
+	padding-top:20px; 	
+}
+.enter_flags img{
+	margin-left:10px;
+	vertical-align:middle;
+}
+#enter_slogan {
+	width:960px;
+	float:left;
+	padding-top:15px;
+	padding-bottom:15px;
+	border-bottom:4px solid #000;
+	color: #999999;
+	font-size: 17px;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-weight: bold;
+	font-style: italic;
+	text-align:right;
+}
+#enter_slogan a {
+	color: #999999;
+	font-size: 17px;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-weight: bold;
+	font-style: italic;
+	text-align:right;
+	text-decoration:none;
+}
+
+.enter_flags a {
+  float:right
+	font-size: 14px;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-weight: bold;
+	font-style: italic;
+	color: #999999;
+	text-align:right;
+	text-decoration:none;
+}
+
+.enter_flags a:hover {
+	text-align:right;
+	text-decoration:underline;
+	
+}
+
+#enter_slogan a:hover {
+	color: #000;
+	font-size: 17px;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-weight: bold;
+	font-style: italic;
+	text-align:right;
+	text-decoration:underline;
+}
+
+#enter_content {
+	width:960px;
+	float:left;
+	padding-top:30px;
+	padding-bottom:30px;
+	border-bottom:1px solid #000;
+}
+.enter_gallery{
+	width:310px;
+	margin:0;
+	padding:0;
+	height:241px;
+	float:left;
+}
+
+.wrap_txt {
+	width:620px;
+	float:left;
+	padding-left:10px;
+	font-weight: normal;
+	font-size: 15px;
+	color:#000000;
+	border:0px solid red;
+			font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+.enter_txt {
+	width:265px;
+	float:left;
+	padding-left:20px;
+	font-weight: normal;
+	font-size: 15px;
+	color:#000000;
+	border:0px solid red;
+			font-family: Helvetica, "Times New Roman", Times, serif;
+}
+.enter_txt a {
+	font-weight: bold;
+	font-size: 12px;
+	color:#000000;
+	text-decoration:none;
+
+}
+.enter_txt a:hover {
+
+	font-weight: bold;
+	font-size: 12px;
+	text-decoration:none;
+	background:#FFFF00;
+}
+
+.enter_txt1 {
+	width:315px;
+	float:left;
+	padding-left:20px;
+	font-weight: normal;
+	font-size: 15px;
+		border:0px solid red;
+	color:#000000;
+			font-family: Helvetica, "Times New Roman", Times, serif;
+}
+.enter_txt1 a {
+	font-weight: bold;
+	font-size: 12px;
+	color:#000000;
+	text-decoration:none;
+
+}
+.enter_txt1 a:hover {
+
+	font-weight: bold;
+	font-size: 12px;
+	text-decoration:none;
+	background:#FFFF00;
+}
+
+
+
+
+
+
+
+
+
+

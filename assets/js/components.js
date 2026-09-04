@@ -74,6 +74,17 @@
         { id: "places", bg: "Места", en: "Places" },
         { id: "my-recommendations", bg: "Препоръчано от мен", en: "My Recommendations" }
       ]
+    },
+    "in-the-past": {
+      firstId: "anatomy",
+      firstHref: "in-the-past.html",
+      items: [
+        { id: "anatomy", bg: "Анатомия", en: "Anatomy" },
+        { id: "biology", bg: "Биология", en: "Biology" },
+        { id: "microbiology", bg: "Микробиология", en: "Microbiology" },
+        { id: "the-memoir", bg: "Мемоар", en: "The Memoir" },
+        { id: "translations", bg: "Преводи", en: "Translations" }
+      ]
     }
   };
 
@@ -81,6 +92,7 @@
     var path = location.pathname.replace(/\\/g, "/");
     if (path.indexOf("erotic-memories") !== -1) return "erotic-memories";
     if (path.indexOf("now-and-after") !== -1) return "now-and-after";
+    if (path.indexOf("in-the-past") !== -1) return "in-the-past";
     return "";
   }
 

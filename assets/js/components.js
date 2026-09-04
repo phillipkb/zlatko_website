@@ -7,7 +7,7 @@
     { id: "erotic-memories", bg: "Еротични спомени", en: "Erotic Memories" },
     { id: "now-and-after", bg: "Сега и после", en: "Now and After" },
     { id: "in-the-past", bg: "Минало", en: "In the Past" },
-    { id: "gallery", bg: "Галерия", en: "Gallery" },
+    // { id: "gallery", bg: "Галерия", en: "Gallery" },
     { id: "contact", bg: "Контакт", en: "Contact" }
   ];
 
@@ -85,6 +85,23 @@
         { id: "the-memoir", bg: "Мемоар", en: "The Memoir" },
         { id: "translations", bg: "Преводи", en: "Translations" }
       ]
+    },
+    "gallery": {
+      firstId: "albums",
+      firstHref: "gallery.html",
+      items: [
+        { id: "albums", bg: "Албуми", en: "Albums" },
+        { id: "hawaii", bg: "Хавай", en: "Hawaii" },
+        { id: "berlin", bg: "Берлин", en: "Berlin" },
+        { id: "japan", bg: "Япония", en: "Japan" },
+        { id: "andalusia", bg: "Андалузия", en: "Andalusia" },
+        { id: "san-sebastian", bg: "Сан Себастиян", en: "San Sebastian" },
+        { id: "shipka", bg: "Шипка", en: "Shipka" },
+        { id: "sofia-maya-t", bg: "София – Мая Т.", en: "Sofia - Maya T." },
+        { id: "aruba", bg: "Аруба", en: "Aruba" },
+        { id: "san-sebastian-article", bg: "Сан Себастиян – репортаж", en: "San Sebastian - article" },
+        { id: "amsterdam", bg: "Амстердам", en: "Amsterdam" }
+      ]
     }
   };
 
@@ -93,6 +110,7 @@
     if (path.indexOf("erotic-memories") !== -1) return "erotic-memories";
     if (path.indexOf("now-and-after") !== -1) return "now-and-after";
     if (path.indexOf("in-the-past") !== -1) return "in-the-past";
+    if (path.indexOf("gallery") !== -1) return "gallery";
     return "";
   }
 

@@ -521,6 +521,69 @@ html[data-lang="bg"] .essay-index .essay-gloss {
   object-fit: cover;
 }
 
+.album-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr));
+  gap: 1.35rem 1rem;
+  margin: 1.75rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.album-card a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.album-card img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  background: #1b1814;
+}
+
+.album-card h2 {
+  margin: 0.55rem 0 0.15rem;
+  font-size: 1.05rem;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.album-card p {
+  margin: 0;
+  color: var(--ink-soft);
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+}
+
+.album-thumbs {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(7.5rem, 1fr));
+  gap: 0.55rem;
+  margin-top: 1.75rem;
+}
+
+.album-thumbs figure {
+  margin: 0;
+  background: #1b1814;
+}
+
+.album-thumbs img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.album-thumbs figcaption {
+  margin: 0.35rem 0.2rem 0;
+  color: var(--ink-soft);
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  line-height: 1.35;
+}
+
 .home {
   display: grid;
   grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);

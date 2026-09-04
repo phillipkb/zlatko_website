@@ -161,8 +161,8 @@
             "</p>" +
             "<" + titleTag + ' class="site-title">' +
               '<a href="' + href + '">' +
-                '<span class="lang-bg">До Саутхамптън през Айова</span>' +
-                '<span class="lang-en">To Southampton via Iowa</span>' +
+                '<span class="lang-bg">Bulgaria-Canada-USA-UK-Spain</span>' +
+                '<span class="lang-en">Bulgaria-Canada-USA-UK-Spain</span>' +
               "</a>" +
             "</" + titleTag + ">" +
             '<p class="site-kicker">' +

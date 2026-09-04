@@ -11,8 +11,8 @@
     var html = document.documentElement;
     var storageKey = "antipropaganda-lang";
     var titled = {
-      bg: html.getAttribute("data-title-bg") || "Златко Ангелов — До Саутхамптън през Айова",
-      en: html.getAttribute("data-title-en") || "Zlatko Anguelov — To Southampton via Iowa"
+      bg: html.getAttribute("data-title-bg") || "Златко Ангелов — Bulgaria-Canada-USA-UK-Spain",
+      en: html.getAttribute("data-title-en") || "Zlatko Anguelov — Bulgaria-Canada-USA-UK-Spain"
     };
     var navLabel = {
       bg: "Раздели",

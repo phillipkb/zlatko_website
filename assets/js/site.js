@@ -4,7 +4,7 @@
 
   function bindLanguage() {
     if (languageBound) return;
-    var langButtons = document.querySelectorAll("[data-lang]");
+    var langButtons = document.querySelectorAll(".lang-switch [data-lang]");
     if (!langButtons.length) return;
     languageBound = true;
 
@@ -166,7 +166,7 @@
       }
     });
 
-    document.querySelectorAll("[data-lang]").forEach(function (button) {
+    document.querySelectorAll(".lang-switch [data-lang]").forEach(function (button) {
       button.addEventListener("click", function () {
         if (!dotsWrap) return;
         Array.prototype.forEach.call(dotsWrap.children, function (dot, n) {

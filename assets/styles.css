@@ -156,24 +156,30 @@ a:hover {
 .lang-switch button {
   appearance: none;
   margin: 0;
-  padding: 0.4rem 0.7rem;
+  padding: 0.15rem;
   border: 1px solid transparent;
   background: transparent;
-  color: var(--ink-soft);
-  font-family: var(--font-sans);
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.06em;
+  line-height: 0;
   cursor: pointer;
 }
 
+.lang-switch button img {
+  display: block;
+  width: 35px;
+  height: 22px;
+  border: 1px solid #999;
+}
+
 .lang-switch button[aria-pressed="true"] {
-  color: var(--ink);
   border-color: var(--ink);
 }
 
-.lang-switch button:hover {
-  color: var(--ink);
+.lang-switch button[aria-pressed="true"] img {
+  border-color: var(--ink);
+}
+
+.lang-switch button:hover img {
+  border-color: var(--ink);
 }
 
 .lang-bg,

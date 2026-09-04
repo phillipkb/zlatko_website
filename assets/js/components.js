@@ -147,6 +147,7 @@
       var home = this.hasAttribute("home");
       var titleTag = home ? "h1" : "p";
       var href = pageHref("about");
+      var flags = relToSiteRoot() + "assets/img/";
       this.innerHTML =
         '<header class="site-header">' +
           '<div class="brand">' +
@@ -168,8 +169,12 @@
             "</p>" +
           "</div>" +
           '<div class="lang-switch" role="group" aria-label="Language">' +
-            '<button type="button" data-lang="bg" aria-pressed="true">Български</button>' +
-            '<button type="button" data-lang="en" aria-pressed="false">English</button>' +
+            '<button type="button" data-lang="bg" aria-pressed="true" aria-label="Български" title="Български">' +
+              '<img src="' + flags + 'flag_bg.jpg" alt="" width="35" height="22">' +
+            "</button>" +
+            '<button type="button" data-lang="en" aria-pressed="false" aria-label="English" title="English">' +
+              '<img src="' + flags + 'flag_en.jpg" alt="" width="35" height="22">' +
+            "</button>" +
           "</div>" +
         "</header>";
     }

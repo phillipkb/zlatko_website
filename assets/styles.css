@@ -251,6 +251,10 @@ html[data-lang="en"] div.lang-en {
   align-items: start;
 }
 
+.archive-layout {
+  grid-template-columns: minmax(0, 40rem) minmax(12rem, 18rem);
+}
+
 .book-layout .page {
   max-width: none;
 }
@@ -752,7 +756,8 @@ html[data-lang="en"] .statement[lang="bg"] {
     padding-top: 1.5rem;
   }
 
-  .book-layout {
+  .book-layout,
+  .archive-layout {
     grid-template-columns: 1fr;
   }
 
@@ -775,5 +780,115 @@ html[data-lang="en"] .statement[lang="bg"] {
 
   .site-footer {
     flex-direction: column;
+  }
+}
+
+archive-index,
+archive-nav,
+archive-toc {
+  display: block;
+}
+
+.archive-index,
+.archive-toc ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.archive-index {
+  margin-top: 1.75rem;
+}
+
+.archive-index > li,
+.archive-toc .archive-year {
+  margin: 0 0 1.5rem;
+}
+
+.archive-index .archive-year-label,
+.archive-toc .archive-year-label {
+  margin: 0 0 0.65rem;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.archive-index .archive-month,
+.archive-toc .archive-month {
+  margin: 0 0 0.85rem 0;
+}
+
+.archive-index .archive-month-label,
+.archive-toc .archive-month-label {
+  margin: 0 0 0.35rem;
+  color: var(--ink-soft);
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.archive-index .archive-docs,
+.archive-toc .archive-docs {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.archive-index .archive-docs li,
+.archive-toc .archive-docs li {
+  margin: 0 0 0.4rem;
+}
+
+.archive-index a,
+.archive-toc a {
+  color: var(--ink-soft);
+  text-decoration: none;
+}
+
+.archive-index a:hover,
+.archive-toc a:hover {
+  color: var(--accent);
+}
+
+.archive-index a[aria-current="page"],
+.archive-toc a[aria-current="page"] {
+  color: var(--ink);
+  border-bottom: 1px solid var(--accent);
+}
+
+archive-toc {
+  position: sticky;
+  top: 1.5rem;
+  max-height: calc(100vh - 3rem);
+  overflow: auto;
+  padding-top: 0.35rem;
+}
+
+.archive-toc h2 {
+  margin: 0 0 0.85rem;
+  color: var(--ink-soft);
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 600;
+  font-style: normal;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.archive-toc {
+  font-size: 0.82rem;
+  line-height: 1.35;
+}
+
+@media (max-width: 52rem) {
+  archive-toc {
+    position: static;
+    max-height: none;
+    order: -1;
+    padding: 0 0 1.25rem;
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid var(--rule);
   }
 }

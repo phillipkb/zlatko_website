@@ -8,6 +8,7 @@
     { id: "now-and-after", bg: "Сега и после", en: "Now and After" },
     { id: "in-the-past", bg: "Минало", en: "In the Past" },
     // { id: "gallery", bg: "Галерия", en: "Gallery" },
+    { id: "archives", bg: "Архив", en: "Archive" },
     { id: "contact", bg: "Контакт", en: "Contact" }
   ];
 
@@ -111,6 +112,7 @@
     if (path.indexOf("now-and-after") !== -1) return "now-and-after";
     if (path.indexOf("in-the-past") !== -1) return "in-the-past";
     if (path.indexOf("gallery") !== -1) return "gallery";
+    if (path.indexOf("archives") !== -1) return "archives";
     return "";
   }
 
@@ -271,9 +273,143 @@
     }
   }
 
+  var MONTHS = {
+    bg: {
+      "01": "Януари",
+      "02": "Февруари",
+      "03": "Март",
+      "04": "Април",
+      "05": "Май",
+      "06": "Юни",
+      "07": "Юли",
+      "08": "Август",
+      "09": "Септември",
+      "10": "Октомври",
+      "11": "Ноември",
+      "12": "Декември"
+    },
+    en: {
+      "01": "January",
+      "02": "February",
+      "03": "March",
+      "04": "April",
+      "05": "May",
+      "06": "June",
+      "07": "July",
+      "08": "August",
+      "09": "September",
+      "10": "October",
+      "11": "November",
+      "12": "December"
+    }
+  };
+
+  function detectArchiveCurrent() {
+    var path = location.pathname.replace(/\\/g, "/");
+    var match = path.match(/\/archives\/(\d{4})\/(\d{2})\/([^/]+)\.html$/);
+    return match ? match[1] + "/" + match[2] + "/" + match[3] : "";
+  }
+
+  function archiveDocHref(year, month, slug) {
+    return relToPagesRoot() + "archives/" + year + "/" + month + "/" + slug + ".html";
+  }
+
+  function escapeHtml(value) {
+    return String(value)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
+  }
+
+  function groupArchiveItems(items) {
+    var years = [];
+    var byYear = {};
+    (items || []).forEach(function (item) {
+      var yearGroup = byYear[item.year];
+      if (!yearGroup) {
+        yearGroup = { year: item.year, months: [], byMonth: {} };
+        byYear[item.year] = yearGroup;
+        years.push(yearGroup);
+      }
+      var monthGroup = yearGroup.byMonth[item.month];
+      if (!monthGroup) {
+        monthGroup = { month: item.month, docs: [] };
+        yearGroup.byMonth[item.month] = monthGroup;
+        yearGroup.months.push(monthGroup);
+      }
+      monthGroup.docs.push(item);
+    });
+    return years;
+  }
+
+  function renderArchiveTree(items, current, lang) {
+    var monthsMap = MONTHS[lang] || MONTHS.bg;
+    return groupArchiveItems(items).map(function (yearGroup) {
+      var months = yearGroup.months.map(function (monthGroup) {
+        var docs = monthGroup.docs.map(function (item) {
+          var key = item.year + "/" + item.month + "/" + item.slug;
+          var currentAttr = key === current ? ' aria-current="page"' : "";
+          return (
+            "<li>" +
+              '<a href="' + archiveDocHref(item.year, item.month, item.slug) + '"' + currentAttr + ">" +
+                escapeHtml(item.title) +
+              "</a>" +
+            "</li>"
+          );
+        }).join("");
+        return (
+          '<li class="archive-month">' +
+            '<p class="archive-month-label">' + (monthsMap[monthGroup.month] || monthGroup.month) + "</p>" +
+            '<ol class="archive-docs">' + docs + "</ol>" +
+          "</li>"
+        );
+      }).join("");
+      return (
+        '<li class="archive-year">' +
+          '<p class="archive-year-label">' + yearGroup.year + "</p>" +
+          "<ol>" + months + "</ol>" +
+        "</li>"
+      );
+    }).join("");
+  }
+
+  class ArchiveNav extends HTMLElement {
+    connectedCallback() {
+      if (this._ready) return;
+      this._ready = true;
+      var index = global.ArchiveIndex || { bg: [], en: [] };
+      var current = this.getAttribute("current") || detectArchiveCurrent();
+      var layout = this.getAttribute("layout") || (this.tagName.toLowerCase() === "archive-index" ? "page" : "toc");
+      var bgTree = renderArchiveTree(index.bg, current, "bg");
+      var enTree = renderArchiveTree(index.en, current, "en");
+      if (layout === "page") {
+        this.innerHTML =
+          '<div class="lang-bg"><ol class="archive-index">' + bgTree + "</ol></div>" +
+          '<div class="lang-en"><ol class="archive-index">' + enTree + "</ol></div>";
+        return;
+      }
+      this.innerHTML =
+        '<nav class="archive-toc" aria-label="Съдържание">' +
+          "<h2>" +
+            '<span class="lang-bg">Съдържание</span>' +
+            '<span class="lang-en">Contents</span>' +
+          "</h2>" +
+          '<div class="lang-bg"><ol>' + bgTree + "</ol></div>" +
+          '<div class="lang-en"><ol>' + enTree + "</ol></div>" +
+        "</nav>";
+    }
+  }
+
+  class ArchiveToc extends ArchiveNav {}
+  class ArchiveIndex extends ArchiveNav {}
+
   customElements.define("site-header", SiteHeader);
   customElements.define("site-nav", SiteNav);
   customElements.define("site-footer", SiteFooter);
   customElements.define("book-toc", BookToc);
+  customElements.define("archive-nav", ArchiveNav);
+  customElements.define("archive-toc", ArchiveToc);
+  customElements.define("archive-index", ArchiveIndex);
   customElements.define("site-shell", SiteShell);
 })(window);

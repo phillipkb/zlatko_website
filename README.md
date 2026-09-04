@@ -13,6 +13,7 @@ This is not a blog platform and not a CMS. It is a static author archive that vi
 - Host photographs and family/life documents as a visual biography.
 - Present selected texts, endorsements, CVs, and PDF samples of medical and literary writing.
 - Support English and Bulgarian content, matching the two later WordPress editions of the old site (`/en` and `/bg`).
+- Do not preserve user comments from the archive, that functionality will not be ported to the new site
 
 Old content is incomplete. The Wayback Machine capture in `archive/` is a salvage pile, not a working site. The new site reconstructs a coherent public face from those fragments and from any material added later.
 

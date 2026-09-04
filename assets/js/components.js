@@ -52,6 +52,57 @@
     return first.replace(/\.html$/, "") || "about";
   }
 
+  var TOC_SECTIONS = {
+    "erotic-memories": {
+      firstId: "knigata",
+      firstHref: "erotic-memories.html",
+      items: [
+        { id: "knigata", bg: "Книгата", en: "The book" },
+        { id: "recenzii", bg: "Рецензии", en: "Reviews" },
+        { id: "komentari", bg: "Коментари", en: "Comments" },
+        { id: "saobshteniya", bg: "Съобщения", en: "Notices" },
+        { id: "mrezha", bg: "Мрежа", en: "Network" }
+      ]
+    },
+    "now-and-after": {
+      firstId: "prousts-questionnaire",
+      firstHref: "now-and-after.html",
+      items: [
+        { id: "prousts-questionnaire", bg: "Въпросника на Пруст", en: "Proust’s Questionnaire" },
+        { id: "people", bg: "Хора", en: "People" },
+        { id: "books", bg: "Книги", en: "Books" },
+        { id: "places", bg: "Места", en: "Places" },
+        { id: "my-recommendations", bg: "Препоръчано от мен", en: "My Recommendations" }
+      ]
+    }
+  };
+
+  function detectTocSection() {
+    var path = location.pathname.replace(/\\/g, "/");
+    if (path.indexOf("erotic-memories") !== -1) return "erotic-memories";
+    if (path.indexOf("now-and-after") !== -1) return "now-and-after";
+    return "";
+  }
+
+  function currentTocEntry(section) {
+    var spec = TOC_SECTIONS[section];
+    if (!spec) return "";
+    var path = location.pathname.replace(/\\/g, "/");
+    var nested = path.match(new RegExp("/" + section + "/([^/]+)\\.html$"));
+    if (nested) return nested[1];
+    return spec.firstId;
+  }
+
+  function tocEntryHref(section, id) {
+    var spec = TOC_SECTIONS[section];
+    var path = location.pathname.replace(/\\/g, "/");
+    var inFolder = new RegExp("/" + section + "/").test(path);
+    if (id === spec.firstId) {
+      return inFolder ? "../" + spec.firstHref : spec.firstHref;
+    }
+    return inFolder ? id + ".html" : section + "/" + id + ".html";
+  }
+
   global.Site = {
     nav: NAV,
     inPages: inPages,
@@ -132,6 +183,36 @@
     }
   }
 
+  class BookToc extends HTMLElement {
+    connectedCallback() {
+      if (this._ready) return;
+      this._ready = true;
+      var section = this.getAttribute("section") || detectTocSection();
+      var spec = TOC_SECTIONS[section];
+      if (!spec) return;
+      var current = this.getAttribute("current") || currentTocEntry(section);
+      var items = spec.items.map(function (item) {
+        var currentAttr = item.id === current ? ' aria-current="page"' : "";
+        return (
+          "<li>" +
+            '<a href="' + tocEntryHref(section, item.id) + '"' + currentAttr + ">" +
+              '<span class="lang-bg">' + item.bg + "</span>" +
+              '<span class="lang-en">' + item.en + "</span>" +
+            "</a>" +
+          "</li>"
+        );
+      }).join("");
+      this.innerHTML =
+        '<nav class="book-toc" aria-label="Съдържание">' +
+          "<h2>" +
+            '<span class="lang-bg">Съдържание</span>' +
+            '<span class="lang-en">Contents</span>' +
+          "</h2>" +
+          "<ol>" + items + "</ol>" +
+        "</nav>";
+    }
+  }
+
   class SiteShell extends HTMLElement {
     connectedCallback() {
       if (this._ready) return;
@@ -158,5 +239,6 @@
   customElements.define("site-header", SiteHeader);
   customElements.define("site-nav", SiteNav);
   customElements.define("site-footer", SiteFooter);
+  customElements.define("book-toc", BookToc);
   customElements.define("site-shell", SiteShell);
 })(window);
